@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useNavigate } from 'react-router-dom';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ChatInterface from './ChatInterface';
+import JournalHistory from './JournalHistory';
 
 const Dashboard: React.FC = () => {
   const navigate = useNavigate();
@@ -29,9 +30,10 @@ const Dashboard: React.FC = () => {
         <h1 className="text-2xl font-bold mb-6">Welcome to Your Dashboard</h1>
         
         <Tabs defaultValue="overview" className="w-full" onValueChange={setActiveTab}>
-          <TabsList className="grid w-full grid-cols-2 mb-8">
+          <TabsList className="grid w-full grid-cols-3 mb-8">
             <TabsTrigger value="overview">Dashboard Overview</TabsTrigger>
             <TabsTrigger value="ai-chat">AI Wellness Assistant</TabsTrigger>
+            <TabsTrigger value="history">History</TabsTrigger>
           </TabsList>
           
           <TabsContent value="overview" className="space-y-8">
@@ -93,6 +95,10 @@ const Dashboard: React.FC = () => {
           
           <TabsContent value="ai-chat" className="h-[calc(100vh-250px)]">
             <ChatInterface />
+          </TabsContent>
+          
+          <TabsContent value="history">
+            <JournalHistory />
           </TabsContent>
         </Tabs>
       </main>
